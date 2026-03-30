@@ -1,0 +1,54 @@
+{
+  "task": "intent_and_entity_annotation",
+  "language": "en",
+  "guidelines_version": "2.1",
+  "data": [
+    {
+      "id": "ex_001",
+      "text": "Cancel my subscription and refund last payment",
+      "annotations": {
+        "intents": ["cancel_subscription", "request_refund"],
+        "entities": [],
+        "confidence": 0.96
+      },
+      "metadata": {
+        "annotator_id": "A12",
+        "timestamp": "2026-03-30T10:15:00Z"
+      }
+    },
+    {
+      "id": "ex_002",
+      "text": "I never received my order 7890",
+      "annotations": {
+        "intents": ["report_missing_order"],
+        "entities": [
+          {
+            "type": "order_id",
+            "value": "7890",
+            "start": 31,
+            "end": 35
+          }
+        ],
+        "confidence": 0.92
+      },
+      "metadata": {
+        "annotator_id": "A12",
+        "edge_case": false
+      }
+    },
+    {
+      "id": "ex_003",
+      "text": "This app is terrible",
+      "annotations": {
+        "intents": ["negative_feedback"],
+        "sentiment": "negative",
+        "entities": [],
+        "confidence": 0.89
+      },
+      "metadata": {
+        "edge_case": true,
+        "notes": "Implicit intent inferred from sentiment"
+      }
+    }
+  ]
+}
