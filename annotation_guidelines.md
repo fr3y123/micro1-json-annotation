@@ -1,65 +1,72 @@
-# Annotation Guidelines
-## Task: Intent and Entity Annotation
+# Document Annotation & Validation Guidelines
 
-### 1. Overview
-This document defines the rules for annotating text data for intent classification and entity extraction tasks. The goal is to produce high-quality, consistent JSON datasets suitable for machine learning model training and evaluation.
-
----
-
-### 2. Annotation Structure
-
-Each data point must follow this JSON structure:
-
-- `text`: Original user input
-- `intents`: List of one or more intents
-- `entities`: Extracted structured information from text
-- `confidence`: Annotator confidence score (0.0 - 1.0)
-- `metadata`: Additional contextual information
+## Objective
+Ensure AI-extracted JSON data matches the source document exactly in value, structure, and meaning.
 
 ---
 
-### 3. Intent Annotation Rules
+## 1. Validation Process
 
-#### 3.1 General Rules
-- Assign **at least one intent** per input.
-- Use **multi-intent labeling** if the sentence expresses more than one action.
-- Choose intents based on **user goal**, not keywords.
-
-#### 3.2 Examples
-| Text | Intent |
-|------|------|
-| "Cancel my order" | cancel_order |
-| "Cancel and refund me" | cancel_order, request_refund |
-
-#### 3.3 Ambiguity Handling
-- If unclear, select the **most probable intent**
-- Add `"edge_case": true` in metadata
+1. Compare each JSON field with the source PDF
+2. Verify:
+   - Text accuracy (no spelling or truncation errors)
+   - Numerical correctness
+   - Proper field placement in JSON
+3. Correct any discrepancies
 
 ---
 
-### 4. Entity Annotation Rules
+## 2. Numerical Validation
 
-#### 4.1 General Rules
-- Extract only **relevant entities**
-- Do NOT infer values not explicitly present (unless specified)
-- Use precise text spans when possible
+- Recalculate:
+  - Line item totals (quantity × unit price)
+  - Subtotals
+  - VAT / tax
+  - Final totals
 
-#### 4.2 Entity Format
-Each entity must include:
-- `type`: Entity category (e.g., order_id)
-- `value`: Extracted value
-- `start` (optional): Start index in text
-- `end` (optional): End index in text
+- Ensure:
+  - No rounding errors
+  - Values match document exactly
 
-#### 4.3 Examples
-Text:  
-"I never received my order 12345"
+---
 
-Entity:
-```json
-{
-  "type": "order_id",
-  "value": "12345",
-  "start": 30,
-  "end": 35
-}
+## 3. Table Validation
+
+- Ensure all rows are extracted
+- Verify:
+  - No missing items
+  - Correct alignment of columns
+  - Accurate totals per row
+
+---
+
+## 4. JSON Structure Validation
+
+- Confirm correct nesting
+- Ensure fields are in proper locations
+- Validate required fields exist
+
+---
+
+## 5. Language Accuracy (Bilingual)
+
+- Ensure extracted text matches original language
+- Do not translate unless required
+- Preserve names, numbers, and formatting exactly
+
+---
+
+## 6. Common Errors to Catch
+
+- Incorrect totals
+- Missing rows
+- Misplaced fields
+- OCR misreads (e.g., 0 vs O)
+- Language misinterpretation
+
+---
+
+## 7. Notes
+
+- Add validation notes when corrections are made
+- Maintain consistency across documents
