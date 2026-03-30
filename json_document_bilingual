@@ -1,0 +1,42 @@
+{
+  "invoice_number": "INV-2045",
+  "date": "2026-03-10",
+  "vendor_name": {
+    "ar": "مؤسسة النور التجارية",
+    "en": "Al Noor Trading Est."
+  },
+  "items": [
+    {
+      "description": {
+        "ar": "هاتف",
+        "en": "Phone"
+      },
+      "quantity": 3,
+      "unit_price": 1500,
+      "total": 4500
+    }
+  ],
+  "subtotal": 4500,
+  "vat": 675,
+  "total_amount": 5175,
+  "validation_notes": [
+"validation_notes": [
+  {
+    "en": "Corrected item total from 4000 to 4500",
+    "ar": "تم تصحيح إجمالي العنصر من 4000 إلى 4500"
+  },
+  {
+    "en": "Recalculated VAT at 15% to match the source document",
+    "ar": "تمت إعادة حساب ضريبة القيمة المضافة بنسبة 15٪ لتطابق المستند"
+  },
+  {
+    "en": "Updated subtotal and total_amount",
+    "ar": "تم تحديث المجموع الفرعي والإجمالي"
+  },
+  {
+    "en": "Verified Arabic text matches source exactly",
+    "ar": "تم التحقق من أن النص العربي مطابق تمامًا للمصدر"
+  }
+]
+  ]
+}
