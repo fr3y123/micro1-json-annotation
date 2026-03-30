@@ -1,54 +1,21 @@
 {
-  "task": "intent_and_entity_annotation",
-  "language": "en",
-  "guidelines_version": "2.1",
-  "data": [
+  "invoice_number": "INV-1023",
+  "date": "2026-02-15",
+  "vendor_name": "Al Noor Trading",
+  "items": [
     {
-      "id": "ex_001",
-      "text": "Cancel my subscription and refund last payment",
-      "annotations": {
-        "intents": ["cancel_subscription", "request_refund"],
-        "entities": [],
-        "confidence": 0.96
-      },
-      "metadata": {
-        "annotator_id": "A12",
-        "timestamp": "2026-03-30T10:15:00Z"
-      }
-    },
-    {
-      "id": "ex_002",
-      "text": "I never received my order 7890",
-      "annotations": {
-        "intents": ["report_missing_order"],
-        "entities": [
-          {
-            "type": "order_id",
-            "value": "7890",
-            "start": 31,
-            "end": 35
-          }
-        ],
-        "confidence": 0.92
-      },
-      "metadata": {
-        "annotator_id": "A12",
-        "edge_case": false
-      }
-    },
-    {
-      "id": "ex_003",
-      "text": "This app is terrible",
-      "annotations": {
-        "intents": ["negative_feedback"],
-        "sentiment": "negative",
-        "entities": [],
-        "confidence": 0.89
-      },
-      "metadata": {
-        "edge_case": true,
-        "notes": "Implicit intent inferred from sentiment"
-      }
+      "description": "Laptop",
+      "quantity": 2,
+      "unit_price": 2500,
+      "total": 5000
     }
+  ],
+  "subtotal": 5000,
+  "vat": 750,
+  "total_amount": 5750,
+  "validation_notes": [
+    "Corrected item total from 4000 to 5000",
+    "Recalculated VAT at 15%",
+    "Updated subtotal and total_amount accordingly"
   ]
 }
